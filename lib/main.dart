@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_api/widget/username.dart';
+import 'package:flutter_api/widget/password.dart';
+import 'package:flutter_api/widget/button.dart';
 
 void main() {
   runApp(const MyApp());
@@ -62,38 +65,69 @@ class _MyHomePageState extends State<MyHomePage> {
         SizedBox(
           height: 200,
         ),
-        Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: TextFormField(
-            decoration: InputDecoration(
-              labelText: 'Username',
-              border:
-                  OutlineInputBorder(borderRadius: BorderRadius.circular(30)),
-            ),
-          ),
-        ),
-        Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: TextFormField(
-            decoration: InputDecoration(
-              labelText: 'Password',
-              border:
-                  OutlineInputBorder(borderRadius: BorderRadius.circular(30)),
-            ),
-          ),
-        ),
-        ElevatedButton(
-          style: ElevatedButton.styleFrom(
-              padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 10),
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(20))),
-          child: const Text(
-            'Button',
-            style: TextStyle(fontSize: 24),
-          ),
-          onPressed: () {},
-        ),
+        Username(),
+        Password(),
+        button(),
       ]), // This trailing comma makes auto-formatting nicer for build methods.
+    );
+  }
+}
+
+class button extends StatelessWidget {
+  const button({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return ElevatedButton(
+      style: ElevatedButton.styleFrom(
+          padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 10),
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(20))),
+      child: const Text(
+        'Button',
+        style: TextStyle(fontSize: 24),
+      ),
+      onPressed: () {},
+    );
+  }
+}
+
+class Password extends StatelessWidget {
+  const Password({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: TextFormField(
+        decoration: InputDecoration(
+          labelText: 'Password',
+          border: OutlineInputBorder(borderRadius: BorderRadius.circular(30)),
+        ),
+      ),
+    );
+  }
+}
+
+class Username extends StatelessWidget {
+  const Username({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: TextFormField(
+        decoration: InputDecoration(
+          labelText: 'Username',
+          border: OutlineInputBorder(borderRadius: BorderRadius.circular(30)),
+        ),
+      ),
     );
   }
 }
